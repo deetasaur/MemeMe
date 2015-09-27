@@ -38,6 +38,7 @@
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tnt-8V-IB6">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pkD-Gn-NdY">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
@@ -51,6 +52,11 @@
                                         <barButtonItem key="leftBarButtonItem" title="Share" id="Pp6-dY-prz">
                                             <connections>
                                                 <action selector="share:" destination="vXZ-lx-hvc" id="hCb-xl-GgI"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="leY-BF-OeJ">
+                                            <connections>
+                                                <action selector="cancel:" destination="vXZ-lx-hvc" id="IOC-Gs-W3q"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -146,6 +152,7 @@
                         <outlet property="bottomNavToolbar" destination="2ua-mZ-B02" id="ypR-kS-TeO"/>
                         <outlet property="bottomText" destination="pkD-Gn-NdY" id="2Um-Tv-cPR"/>
                         <outlet property="cameraButton" destination="zcQ-zc-Kyv" id="pFI-Su-dmZ"/>
+                        <outlet property="cancelButton" destination="leY-BF-OeJ" id="PDh-cB-vQL"/>
                         <outlet property="imagePickerView" destination="tnt-8V-IB6" id="Cv0-NO-ByA"/>
                         <outlet property="shareButton" destination="Pp6-dY-prz" id="fz2-gE-Jnm"/>
                         <outlet property="topNavToolbar" destination="Env-a1-l96" id="ZkY-kg-ZYe"/>

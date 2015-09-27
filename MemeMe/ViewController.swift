@@ -17,6 +17,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var topNavToolbar: UINavigationBar!
     @IBOutlet weak var bottomNavToolbar: UIToolbar!
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     
     let memeTextAttributes = [
@@ -39,6 +40,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         bottomText.delegate = self
         
         shareButton.enabled = false
+        cancelButton.enabled = false
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -51,8 +53,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillDisappear(animated)
         self.unsubscribeFromKeyboardNotifications()
     }
+    @IBAction func cancel(sender: UIBarButtonItem) {
+        self.imagePickerView.image = nil
+        topText.text = "TOP"
+        bottomText.text = "BOTTOM"
+    }
     
-    @IBAction func share(sender: AnyObject) {
+    @IBAction func share(sender: UIBarButtonItem) {
         let memedImage = save()
         let controller = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         controller.completionWithItemsHandler = {(type: String!, completed: Bool, returnedItems: [AnyObject]!, error: NSError!) -> Void in
@@ -110,13 +117,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.presentViewController(imagePicker, animated: true, completion: nil)
     }
     
-    // Once user grabs a valid image, enable the sharing ability
+    // Once user grabs a valid image, enable the sharing and cancelling ability
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.imagePickerView.image = image
             self.imagePickerView.contentMode = .ScaleAspectFit
             shareButton.enabled = true
+            cancelButton.enabled = true
         }
         
         self.dismissViewControllerAnimated(true, completion: nil)
