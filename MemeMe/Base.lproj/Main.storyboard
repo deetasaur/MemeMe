@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ua-mZ-B02">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dek-I8-WL7"/>
+                                    <barButtonItem title="Camera" id="zcQ-zc-Kyv">
+                                        <connections>
+                                            <action selector="takeAnImage:" destination="vXZ-lx-hvc" id="6oE-bn-blF"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="N4F-Ug-6cc"/>
+                                    <barButtonItem title="Album" id="P6z-7L-Kxc">
+                                        <connections>
+                                            <action selector="pickAnImage:" destination="vXZ-lx-hvc" id="G84-ca-PDh"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Ac2-3Y-6e4"/>
+                                </items>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tnt-8V-IB6">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pkD-Gn-NdY">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Env-a1-l96">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <navigationItem id="gqC-U4-T9M">
+                                        <barButtonItem key="leftBarButtonItem" title="Share" id="Pp6-dY-prz">
+                                            <connections>
+                                                <action selector="share:" destination="vXZ-lx-hvc" id="hCb-xl-GgI"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dj0-kI-zFU">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pkD-Gn-NdY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="4Tn-M5-yaQ"/>
+                            <constraint firstItem="tnt-8V-IB6" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="DhE-6g-ryo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pkD-Gn-NdY" secondAttribute="trailing" constant="-16" id="EkQ-hO-0qN"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="2ua-mZ-B02" secondAttribute="bottom" id="QZc-j0-iKr"/>
+                            <constraint firstItem="dj0-kI-zFU" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="V1p-x3-gIb"/>
+                            <constraint firstItem="Env-a1-l96" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="V3u-4g-Qqr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tnt-8V-IB6" secondAttribute="trailing" constant="-16" id="Vr9-MY-Olc"/>
+                            <constraint firstItem="Env-a1-l96" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="XGr-U9-Nef"/>
+                            <constraint firstItem="Env-a1-l96" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="YgQ-6c-SwI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dj0-kI-zFU" secondAttribute="trailing" constant="-16" id="aoh-Rc-8PV"/>
+                            <constraint firstItem="2ua-mZ-B02" firstAttribute="top" secondItem="pkD-Gn-NdY" secondAttribute="bottom" constant="55" id="c7d-m6-fim"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Env-a1-l96" secondAttribute="trailing" constant="-16" id="hbS-BC-dHN"/>
+                            <constraint firstItem="dj0-kI-zFU" firstAttribute="top" secondItem="Env-a1-l96" secondAttribute="bottom" constant="26" id="jQh-ev-98l"/>
+                            <constraint firstItem="2ua-mZ-B02" firstAttribute="top" secondItem="tnt-8V-IB6" secondAttribute="bottom" id="mmg-Vs-NQV"/>
+                            <constraint firstItem="2ua-mZ-B02" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="mnh-bV-aLt"/>
+                            <constraint firstItem="tnt-8V-IB6" firstAttribute="top" secondItem="Env-a1-l96" secondAttribute="bottom" id="opP-fu-RYB"/>
+                            <constraint firstItem="2ua-mZ-B02" firstAttribute="top" secondItem="tnt-8V-IB6" secondAttribute="bottom" id="soa-qK-GKk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2ua-mZ-B02" secondAttribute="trailing" constant="-16" id="uba-IF-JB9"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="2ua-mZ-B02"/>
+                                <exclude reference="tnt-8V-IB6"/>
+                                <exclude reference="pkD-Gn-NdY"/>
+                                <exclude reference="Env-a1-l96"/>
+                                <exclude reference="dj0-kI-zFU"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="QZc-j0-iKr"/>
+                                <exclude reference="V1p-x3-gIb"/>
+                                <exclude reference="aoh-Rc-8PV"/>
+                                <exclude reference="jQh-ev-98l"/>
+                                <exclude reference="4Tn-M5-yaQ"/>
+                                <exclude reference="EkQ-hO-0qN"/>
+                                <exclude reference="c7d-m6-fim"/>
+                                <exclude reference="mmg-Vs-NQV"/>
+                                <exclude reference="mnh-bV-aLt"/>
+                                <exclude reference="soa-qK-GKk"/>
+                                <exclude reference="uba-IF-JB9"/>
+                                <exclude reference="V3u-4g-Qqr"/>
+                                <exclude reference="XGr-U9-Nef"/>
+                                <exclude reference="YgQ-6c-SwI"/>
+                                <exclude reference="hbS-BC-dHN"/>
+                                <exclude reference="DhE-6g-ryo"/>
+                                <exclude reference="Vr9-MY-Olc"/>
+                                <exclude reference="opP-fu-RYB"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="2ua-mZ-B02"/>
+                                <include reference="tnt-8V-IB6"/>
+                                <include reference="pkD-Gn-NdY"/>
+                                <include reference="Env-a1-l96"/>
+                                <include reference="dj0-kI-zFU"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="QZc-j0-iKr"/>
+                                <include reference="V1p-x3-gIb"/>
+                                <include reference="aoh-Rc-8PV"/>
+                                <include reference="jQh-ev-98l"/>
+                                <include reference="4Tn-M5-yaQ"/>
+                                <include reference="EkQ-hO-0qN"/>
+                                <include reference="c7d-m6-fim"/>
+                                <include reference="mmg-Vs-NQV"/>
+                                <include reference="mnh-bV-aLt"/>
+                                <include reference="soa-qK-GKk"/>
+                                <include reference="uba-IF-JB9"/>
+                                <include reference="V3u-4g-Qqr"/>
+                                <include reference="XGr-U9-Nef"/>
+                                <include reference="YgQ-6c-SwI"/>
+                                <include reference="hbS-BC-dHN"/>
+                                <include reference="DhE-6g-ryo"/>
+                                <include reference="Vr9-MY-Olc"/>
+                                <include reference="opP-fu-RYB"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="bottomNavToolbar" destination="2ua-mZ-B02" id="ypR-kS-TeO"/>
+                        <outlet property="bottomText" destination="pkD-Gn-NdY" id="2Um-Tv-cPR"/>
+                        <outlet property="cameraButton" destination="zcQ-zc-Kyv" id="pFI-Su-dmZ"/>
+                        <outlet property="imagePickerView" destination="tnt-8V-IB6" id="Cv0-NO-ByA"/>
+                        <outlet property="shareButton" destination="Pp6-dY-prz" id="fz2-gE-Jnm"/>
+                        <outlet property="topNavToolbar" destination="Env-a1-l96" id="ZkY-kg-ZYe"/>
+                        <outlet property="topText" destination="dj0-kI-zFU" id="uTJ-I6-BVs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
