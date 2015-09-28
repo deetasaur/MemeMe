@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="dek-I8-WL7"/>
-                                    <barButtonItem title="Camera" id="zcQ-zc-Kyv">
+                                    <barButtonItem systemItem="camera" id="zcQ-zc-Kyv">
                                         <connections>
                                             <action selector="takeAnImage:" destination="vXZ-lx-hvc" id="6oE-bn-blF"/>
                                         </connections>
@@ -49,7 +49,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
                                     <navigationItem id="gqC-U4-T9M">
-                                        <barButtonItem key="leftBarButtonItem" title="Share" id="Pp6-dY-prz">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="Pp6-dY-prz">
                                             <connections>
                                                 <action selector="share:" destination="vXZ-lx-hvc" id="hCb-xl-GgI"/>
                                             </connections>

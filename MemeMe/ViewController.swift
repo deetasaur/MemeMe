@@ -60,27 +60,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func share(sender: UIBarButtonItem) {
-        let memedImage = save()
+        let memedImage = generateMemedImage()
         let controller = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         controller.completionWithItemsHandler = {(type: String!, completed: Bool, returnedItems: [AnyObject]!, error: NSError!) -> Void in
-            // Dismiss the view controller that was presented modally.
+            // Save the meme and dismiss the view controller that was presented modally.
             dispatch_async(dispatch_get_main_queue()){
+                self.save()
                 self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
             }
         }
-        self.presentViewController(controller, animated: true, completion: nil)
+        presentViewController(controller, animated: true, completion: nil)
     }
     
     
-    func save() -> UIImage {
+    func save() {
         //Create the meme image
         let memedImage = generateMemedImage()
         
         // Create the meme object based on the above image and save to photo album
         let meme = Meme(top: topText.text!, bottom: bottomText.text!, image: self.imagePickerView.image!, memedImage: memedImage)
         UIImageWriteToSavedPhotosAlbum(meme.getMemedImage(), nil, nil, nil)
-        
-        return meme.getMemedImage()
     }
     
     func generateMemedImage() -> UIImage
@@ -138,6 +137,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if(textField.text == "TOP" || textField.text == "BOTTOM") {
             textField.text = ""
         }
+        textField.isFirstResponder()
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -147,12 +147,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // Move the image screen up based on keyboard height
     func keyboardWillShow(notification: NSNotification) {
-        self.view.frame.origin.y -= getKeyboardHeight(notification)
+        if(bottomText.isFirstResponder()) {
+            self.view.frame.origin.y -= getKeyboardHeight(notification)
+        }
     }
     
     // Move the image screen down based on keyboard height
     func keyboardWillHide(notification: NSNotification) {
-        self.view.frame.origin.y += getKeyboardHeight(notification)
+        if(bottomText.isFirstResponder()) {
+            self.view.frame.origin.y += getKeyboardHeight(notification)
+        }
     }
     
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
