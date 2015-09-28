@@ -46,15 +46,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillAppear(animated: Bool) {
         // Only enable the camera button if there is a camera available
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
-        self.subscribeToKeyboardNotifications()
+        subscribeToKeyboardNotifications()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.unsubscribeFromKeyboardNotifications()
+        unsubscribeFromKeyboardNotifications()
     }
     @IBAction func cancel(sender: UIBarButtonItem) {
-        self.imagePickerView.image = nil
+        imagePickerView.image = nil
         topText.text = "TOP"
         bottomText.text = "BOTTOM"
     }
@@ -78,24 +78,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let memedImage = generateMemedImage()
         
         // Create the meme object based on the above image and save to photo album
-        let meme = Meme(top: topText.text!, bottom: bottomText.text!, image: self.imagePickerView.image!, memedImage: memedImage)
+        let meme = Meme(top: topText.text!, bottom: bottomText.text!, image: imagePickerView.image!, memedImage: memedImage)
         UIImageWriteToSavedPhotosAlbum(meme.getMemedImage(), nil, nil, nil)
     }
     
     func generateMemedImage() -> UIImage
     {
         // Hide the nav bars when saving the meme
-        self.topNavToolbar.hidden = true
-        self.bottomNavToolbar.hidden = true
+        topNavToolbar.hidden = true
+        bottomNavToolbar.hidden = true
         
         // Render view to an image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        self.bottomNavToolbar.hidden = false
-        self.topNavToolbar.hidden = false
+        bottomNavToolbar.hidden = false
+        topNavToolbar.hidden = false
 
         return memedImage
     }
@@ -105,7 +105,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     // Take a picture using the camera
@@ -113,24 +113,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     // Once user grabs a valid image, enable the sharing and cancelling ability
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            self.imagePickerView.image = image
-            self.imagePickerView.contentMode = .ScaleAspectFit
+            imagePickerView.image = image
+            imagePickerView.contentMode = .ScaleAspectFit
             shareButton.enabled = true
             cancelButton.enabled = true
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
@@ -148,14 +148,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // Move the image screen up based on keyboard height
     func keyboardWillShow(notification: NSNotification) {
         if(bottomText.isFirstResponder()) {
-            self.view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y -= getKeyboardHeight(notification)
         }
     }
     
     // Move the image screen down based on keyboard height
     func keyboardWillHide(notification: NSNotification) {
         if(bottomText.isFirstResponder()) {
-            self.view.frame.origin.y += getKeyboardHeight(notification)
+            view.frame.origin.y += getKeyboardHeight(notification)
         }
     }
     
